@@ -96,7 +96,7 @@ Run `bundle exec rspec` to run tests
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [] Add validation to model
-- [] Add crud operations to blog posts
+- [] Add tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
