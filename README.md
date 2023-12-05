@@ -38,7 +38,7 @@
 </details>
 
 ### Key Features <a name="key-features"></a>
-- [] Data models
+- [] Data models with associations
 - [] Schema
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -46,13 +46,18 @@
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
-- [ ] Clone the git repository
+- [ ] Clone the git repository by running the command
+
+```
+  git clone https://github.com/martinkarugaba/blog_app.git
+```
+
 
 ### Prerequisites
 
 In order to run this project you need:
 
-- to have ruby and ruby on rails installed on your system
+- to have `ruby version 3 and above` and ruby on `rails version 7 and above` installed on your system
 
 ### Setup
 
@@ -62,11 +67,20 @@ Clone this repository to your desired folder:
   git clone https://github.com/martinkarugaba/blog_app
 ```
 
-<!-- ### Usage
-
 To run the project, execute the following command:
 
-```ruby verify.rb``` -->
+```
+  cd blog_app
+```
+run `bundle install` to install all the neccesary gems
+
+run  `rails db:setup` to create the database and run migrations
+
+run `rails s` to run your app
+
+Your app will be served at `http://localhost:3000`
+
+Run `bundle exec rspec` to run tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,7 +96,7 @@ To run the project, execute the following command:
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [] Add validation to model
-- [] Add crud operations to blog posts
+- [] Add tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
