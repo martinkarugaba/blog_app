@@ -9,7 +9,6 @@ class Comment < ApplicationRecord
 
   private
 
-  # Updates the comments counter of the associated post.
   def update_post_comments_counter
     post.update(comments_count: post.comments.count)
   end
