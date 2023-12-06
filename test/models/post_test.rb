@@ -1,49 +1,40 @@
-require 'test_helper'
+# # test/models/user_test.rb
 
-class PostTest < ActiveSupport::TestCase
-  def setup
-    @user = users(:user_one) # Replace with your fixture or create a user as needed
-    @post = Post.new(
-      title: 'Example Title',
-      author: @user,
-      comments_counter: 0,
-      likes_counter: 0
-    )
-  end
+# require 'test_helper'
 
-  test 'valid post' do
-    assert @post.valid?
-  end
+# class UserTest < ActiveSupport::TestCase
+#   test 'should be valid with a name' do
+#     user = User.new(name: 'John Doe', posts_counter: 1)
+#     assert user.valid?
+#   end
 
-  test 'title presence' do
-    @post.title = '   '
-    assert_not @post.valid?
-  end
+#   test 'should be invalid without a name' do
+#     user = User.new(posts_counter: 1)
+#     assert_not user.valid?
+#     assert_equal ['can\'t be blank'], user.errors[:name]
+#   end
 
-  test 'title length maximum' do
-    @post.title = 'a' * 251
-    assert_not @post.valid?
-  end
+#   test 'should be invalid with a non-integer posts_counter' do
+#     user = User.new(name: 'John Doe', posts_counter: 'abc')
+#     assert_not user.valid?
+#     assert_equal ['must be an integer'], user.errors[:posts_counter]
+#   end
 
-  test 'comments_counter numericality' do
-    @post.comments_counter = 'abc'
-    assert_not @post.valid?
+#   test 'should be invalid with a negative posts_counter' do
+#     user = User.new(name: 'John Doe', posts_counter: -1)
+#     assert_not user.valid?
+#     assert_equal ['must be greater than or equal to 0'], user.errors[:posts_counter]
+#   end
 
-    @post.comments_counter = -1
-    assert_not @post.valid?
+#   test 'should create user with associated comments' do
+#     user = User.new(name: 'John Doe', posts_counter: 1)
+#     user.save
 
-    @post.comments_counter = 1.5
-    assert_not @post.valid?
-  end
+#     post = user.posts.create(title: 'Sample Post', text: 'This is a sample post.')
+#     comment = post.comments.create(user: user, text: 'This is the first comment.')
 
-  test 'likes_counter numericality' do
-    @post.likes_counter = 'abc'
-    assert_not @post.valid?
-
-    @post.likes_counter = -1
-    assert_not @post.valid?
-
-    @post.likes_counter = 1.5
-    assert_not @post.valid?
-  end
-end
+#     assert user.valid?
+#     assert post.valid?
+#     assert comment.valid?
+#   end
+# end

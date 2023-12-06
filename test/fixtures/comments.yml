@@ -1,13 +1,14 @@
 comment_one:
-  user_id: 1
-  post_id: 1
+  user: john_doe
+  post: first_post
   text: "This is the first comment."
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
 comment_two:
-  user_id: 2
-  post_id: 2
+  user: jane_smith
+  post: second_post
   text: "This is the second comment."
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
+
