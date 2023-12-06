@@ -1,11 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+comment_one:
+  user_id: 1
+  post_id: 1
+  text: "This is the first comment."
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-one:
-  user: one
-  post: one
-  text: MyText
-
-two:
-  user: two
-  post: two
-  text: MyText
+comment_two:
+  user_id: 2
+  post_id: 2
+  text: "This is the second comment."
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
