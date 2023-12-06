@@ -1,5 +1,3 @@
-# test/models/comment_test.rb
-
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase

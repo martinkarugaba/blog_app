@@ -1,5 +1,3 @@
-# test/models/like_test.rb
-
 require 'test_helper'
 
 class LikeTest < ActiveSupport::TestCase
