@@ -1,9 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+like_one:
+  user: john_doe
+  post: first_post
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-one:
-  user: one
-  post: one
-
-two:
-  user: two
-  post: two
+like_two:
+  user: jane_smith
+  post: second_post
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
