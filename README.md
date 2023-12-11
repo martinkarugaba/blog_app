@@ -38,8 +38,7 @@
 </details>
 
 ### Key Features <a name="key-features"></a>
-- [] Data models with associations
-- [] Schema
+- [] Pages with placeholder data
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,7 +94,7 @@ Run `bundle exec rspec` to run tests
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] Add views
+- [] Add unit tests for controllers
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
