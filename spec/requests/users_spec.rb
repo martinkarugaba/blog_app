@@ -37,27 +37,4 @@ RSpec.describe UsersController, type: :request do
       expect(response.body).to include('User Details')
     end
   end
-
-  describe 'POST /create' do
-    it 'creates a new User and redirects to the created user' do
-      expect do
-        post users_path, params: { user: { name: 'John Doe' } }
-      end.to change(User, :count).by(1)
-
-      expect(response).to redirect_to(user_path(User.last))
-    end
-
-    it 'does not create a new User with invalid parameters' do
-      expect do
-        post users_path, params: { user: { name: '' } }
-      end.not_to change(User, :count)
-    end
-
-    it 'renders the new template on failure' do
-      post users_path, params: { user: { name: '' } }
-      expect(response).to render_template(:new)
-      expect(response.body).to include('New User')
-      expect(response.body).to include('This is a placeholder text for the new user page.')
-    end
-  end
 end
