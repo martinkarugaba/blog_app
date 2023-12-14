@@ -1,9 +1,9 @@
 
 
-<section class='flex flex-col justify-start items-center'>
-  <section class='w-[300px] border-black'>
-    <h1 class='font-medium'>Posts</h1>
-    <div class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
+<section class='flex flex-col w-[500px] mb-[5rem] justify-start items-center'>
+  <section class='w-[500px] border-black'>
+    <h1 class='font-medium text-4xl font-medium mb-4'>Posts by <%= @user.name %></h1>
+    <div class='border cursor-pointer px-6 border-black h-[100px] flex items-center justify-start w-full gap-4'>
       <div class='h-[60px] w-[60px] rounded-full border '>
         <% if @user.photo.present? %>
           <img src="<%= @user.photo %>" class='w-full h-full object-cover' alt="Photo">
@@ -16,7 +16,7 @@
       </div>
     </div>
     
-    <ul class='w-full mt-8 flex flex-col justify-start items-start gap-4'>
+    <ul class='w-full mt-8 flex flex-col justify-start w-full items-start gap-4'>
       <% @posts.each_with_index do |post, index| %>
         <div class="post border border-black">
           <h3><%= post.title %></h3>
@@ -26,7 +26,7 @@
             <p>Number of Likes: <%= post.likes.count %></p>
           </div>
           <ul class='border-2'>
-            <% post.comments.each do |comment| %>
+            <% post.comments.order(created_at: :desc).limit(5).each do |comment| %>
               <li><%= comment.text %></li>
             <% end %>
           </ul>
@@ -35,12 +35,12 @@
       <% end %>
     </ul>
 
-    <button class='mt-8 mr-4 p-4 rounded-md font-medium border-2'>
+    <button class='mt-8 mr-4 p-2 rounded-md font-medium border-2'>
       <span><%= link_to 'Load more posts', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %></span>
     </button>
     
     <% if @page.to_i > 0 %>
-      <button class='mt-4 ml-4 p-4 font-medium rounded-md border'>
+      <button class='mt-4 ml-4 p-2 font-medium rounded-md border'>
         <%= link_to 'Go to previous page', user_posts_path(page: (@page.to_i - 1)), class: 'btn' %>
       </button>
     <% end %>
