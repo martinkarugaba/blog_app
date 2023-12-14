@@ -1,12 +1,46 @@
-<!-- FILEPATH: /home/martin/Projects/Rails/blog_app/app/views/posts/index.html.erb -->
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Blog App - Posts</title>
-</head>
-<body>
-  <h1>List of posts</h1>
-</body>
-</html>
+
+<section class='flex flex-col justify-start items-center'>
+  <section class='w-[300px] border-black'>
+    <h1 class='font-medium'>Posts</h1>
+    <div class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
+      <div class='h-[60px] w-[60px] rounded-full border '>
+        <% if @user.photo.present? %>
+          <img src="<%= @user.photo %>" class='w-full h-full object-cover' alt="Photo">
+        <% end %>
+      </div>
+      <div>
+        <a href="<%= user_path(@user) %>">
+          <p><%= @user.name %></p>
+        </a>
+      </div>
+    </div>
+    
+    <ul class='w-full mt-8 flex flex-col justify-start items-start gap-4'>
+      <% @posts.each_with_index do |post, index| %>
+        <div class="post border border-black">
+          <h3><%= post.title %></h3>
+          <p><%= post.text %></p>
+          <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
+            <p>Number of Comments: <%= post.comments.count %></p>
+            <p>Number of Likes: <%= post.likes.count %></p>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+    
+    
+    
+    <button class='mt-8 p-4 rounded-md border'>
+      <%= link_to 'Load more posts', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %>
+    </button>
+    
+    <% if @page.to_i > 0 %>
+      <button class='mt-4 p-4 rounded-md border'>
+        <%= link_to 'Go to previous page', user_posts_path(page: (@page.to_i - 1)), class: 'btn' %>
+      </button>
+    <% end %>
+    
+  </section>
+</section>
 
