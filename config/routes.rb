@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "welcome#index"
+  root "users#index"
 
   get "/show", to: "welcome#show", as: :show_welcome
 

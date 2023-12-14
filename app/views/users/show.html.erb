@@ -1,4 +1,44 @@
-<h1>User Details</h1>
+<section class='flex flex-col w-[500px] justify-start items-center mb-[5rem]'>
+  <h1 class='text-4xl mb-4 font-medium'>User Details</h1>
+  
+  <section class='w-[500px] border-orange-300'>
+    <div class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
+      <div class='h-[60px] w-[60px] rounded-full border '>
+        <% if @user.photo.present? %>
+          <img src="<%= @user.photo %>" class='w-full h-full object-cover' alt="Photo">
+        <% end %>
+      </div>
+      <div>
+        <a href="<%= user_path(@user) %>">
+          <p><%= @user.name %></p>
+        </a>
+      </div>
+    </div>
 
-<p><strong>Name:</strong> John Doe</p>
-<p><strong>Email:</strong> johndoe@example.com</p>
+    <div class='border-2 border-black mt-8'>
+      <p>Bio: <%= @user.bio %></p>
+    </div>
+
+    <div class='mt-8 flex flex-col justify-start start-center gap-4'>
+      <h2 class='font-medium'>Posts by <%= @user.name %></h2>
+      <% @user.recent_posts.each do |post| %>
+        <div class="post border border-black">
+          <h3><%= post.title %></h3>
+          <p><%= post.text %></p>
+          <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
+            <p>Number of Comments: <%= post.comments.count %></p>
+            <p>Number of Likes: <%= post.likes.count %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='mt-8'>
+      <%= link_to 'See All Posts', user_posts_path(@user) %>
+    </div>
+
+    <p class='font-medium text-xl hover:underline'><%= link_to 'Back to Users List', users_path %></p>
+
+  </section>
+</section>  
+

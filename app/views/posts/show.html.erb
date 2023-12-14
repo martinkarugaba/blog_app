@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Blog App - Show Post</title>
-</head>
-<body>
-  <h1>Post Details</h1>
-  <p>This is the show page for a blog post.</p>
-</body>
-</html>
+<h1 class='font-semibold text-3xl mb-6'>Post details</h1>
+
+<section class='w-[500px] border mb-[5rem]'>
+  <div class='flex justify-between items-center'>
+    <p class='font-medium'>Post <%= @post.id %> by <%= @post.author.name %></p>
+    <p class='text-[14px]'>Comments: <%= @post.comments.count %> Likes <%= @post.likes.count %></p>
+  </div>
+
+  <div class='mt-8'>
+    <p><%= @post.text %></p>
+  </div>
+
+  <div class='mt-8'>
+    <p class='font-medium'>Comments</p>
+    <ul class='mt-4'>
+      <% @post.comments.each do |comment| %>
+        <li class='mb-4'>
+          <p class='font-medium'><%= comment.user.name %></p>
+          <p><%= comment.text %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='mt-8'>
+    <%= link_to 'Back to Posts', user_posts_path %>
+  </div>
+</section>
