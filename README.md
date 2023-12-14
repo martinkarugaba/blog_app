@@ -94,7 +94,7 @@ Run `bundle exec rspec` to run tests
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] Add unit tests for controllers
+- [] Add Forms
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
