@@ -25,22 +25,29 @@
             <p>Number of Comments: <%= post.comments.count %></p>
             <p>Number of Likes: <%= post.likes.count %></p>
           </div>
+          <ul class='border-2'>
+            <% post.comments.each do |comment| %>
+              <li><%= comment.text %></li>
+            <% end %>
+          </ul>
+          <a class='font-medium' href="<%= user_post_path(@user, post) %>">Read more</a>
         </div>
       <% end %>
     </ul>
-    
-    
-    
-    <button class='mt-8 p-4 rounded-md border'>
-      <%= link_to 'Load more posts', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %>
+
+    <button class='mt-8 mr-4 p-4 rounded-md font-medium border-2'>
+      <span><%= link_to 'Load more posts', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %></span>
     </button>
     
     <% if @page.to_i > 0 %>
-      <button class='mt-4 p-4 rounded-md border'>
+      <button class='mt-4 ml-4 p-4 font-medium rounded-md border'>
         <%= link_to 'Go to previous page', user_posts_path(page: (@page.to_i - 1)), class: 'btn' %>
       </button>
     <% end %>
     
+    <div class='mt-4 font-semibold'>
+      <%= link_to 'Back to Profile', user_path(@user), class: 'btn' %>
+    </div>
   </section>
 </section>
 
