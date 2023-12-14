@@ -1,17 +1,36 @@
-<h1>User Details</h1>
+<section class='flex flex-col justify-start items-center'>
+  <h1>User Details</h1>
 
-<li class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
-  <div class='h-[60px] w-[60px] rounded-full border '>
-    <% if @user.photo.present? %>
-      <img src="<%= @user.photo %>" class='w-full h-full object-cover' alt="Photo">
-    <% end %>
-  </div>
-  <div>
-    <a href="<%= user_path(@user) %>">
-      <p><%= @user.name %></p>
-    </a>
-  </div>
-</li>
-<p><%= link_to 'Back to Users List', users_path %></p>
+  <p class='font-medium hover:underline'><%= link_to 'Back to Users List', users_path %></p>
 
+  <section class='w-[300px] border border-orange-300'>
+    <div class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
+      <div class='h-[60px] w-[60px] rounded-full border '>
+        <% if @user.photo.present? %>
+          <img src="<%= @user.photo %>" class='w-full h-full object-cover' alt="Photo">
+        <% end %>
+      </div>
+      <div>
+        <a href="<%= user_path(@user) %>">
+          <p><%= @user.name %></p>
+        </a>
+      </div>
+    </div>
 
+    <div class='border-2 border-black mt-8'>
+      <p>Bio: <%= @user.bio %></p>
+    </div>
+
+    <div class='mt-8 flex flex-col justify-start start-center gap-4'>
+      <h2 class='font-medium'>Posts by <%= @user.name %></h2>
+      <% @user.posts.limit(3).each do |post| %>
+        <div class="post border border-black">
+          <h3><%= post.title %></h3>
+          <p><%= post.text %></p>
+          <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
+            <p>Number of Comments: <%= post.comments.count %></p>
+            <p>Number of Likes: <%= post.likes.count %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
