@@ -1,10 +1,10 @@
 
 <section class='border-orange-400 w-full flex flex-col justify-start items-center'>
-  <h1 class='text-3xl font-semibold'>List of users</h1>
+  <h1 class='text-4xl font-semibold'>List of users</h1>
 
   <ul class='border-black mt-8 mb-[4rem] flex flex-col justify-start items-start gap-4'>
     <% @users.each do |user| %>
-      <li class='border-2 cursor-pointer px-6 border-black w-[500px] h-[100px] flex items-center justify-start gap-4'>
+      <li class='border-2 cursor-pointer px-6 border-orange-500 rounded-md w-[500px] h-[100px] flex items-center justify-start gap-4'>
         <div class='h-[60px] w-[60px] rounded-full border '>
           <% if user.photo.present? %>
             <img src="<%= user.photo %>" class='w-full h-full object-cover' alt="Photo">
