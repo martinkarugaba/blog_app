@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.increment!(:likes_counter)
     @like = Like.create(user: current_user, post: @post)
-    # redirect_to user_post_path(@post.author_id, @post)
+    redirect_to user_post_path(@post.author, @post)
   end
 
   def create

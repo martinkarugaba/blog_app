@@ -1,5 +1,4 @@
 <h1 class='font-medium text-3xl mb-8'>Create New Post</h1>
-
 <%= form_for(@post, url: user_posts_path(@user)) do |f| %>
   <div>
     <div>
@@ -7,12 +6,11 @@
       <%= f.text_field :title %>
     </div>
     <div class='mt-8'>
-      <p class='font-medium'><%= f.label :text %><p>
+      <p class='font-medium'><%= f.label :text %></p>
       <%= f.text_area :text %>
-    </div>  
+    </div>
   </div>
-
   <div>
-    <%= f.submit 'Create Post' class='mt-8 p-2 cursor-pointer boder-2 border-black rounded-md' %>
+    <%= f.submit 'Create Post', class: 'mt-8 p-2 cursor-pointer border-2 border-black rounded-md' %>
   </div>
 <% end %>
