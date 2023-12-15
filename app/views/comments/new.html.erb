@@ -1,0 +1,15 @@
+<h1>New Comment</h1>
+
+<%= form_for(current_user.comments.build) do |f| %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.hidden_field :post_id, value: @post.id %>
+
+  <div>
+    <%= f.submit 'Create Comment' %>
+  </div>
+<% end %> 
+

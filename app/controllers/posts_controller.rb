@@ -6,8 +6,30 @@ class PostsController < ApplicationController
     @posts = Post.limit(3).offset(@page * 3)
   end
 
+  def new
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build
+  end
+
   def show
     @post = Post.find(params[:id])
     @user = @post.author
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build(post_params)
+
+    if @post.save
+      redirect_to user_posts_path(@user)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
