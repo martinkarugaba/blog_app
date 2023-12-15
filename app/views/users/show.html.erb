@@ -11,24 +11,27 @@
     <div class='mt-8 flex flex-col justify-start start-center gap-4'>
       <h2 class='font-medium'>Posts by <%= @user.name %></h2>
       <% @user.recent_posts.each do |post| %>
-        <div class="post border border-black">
+        <div class="post border p-4 rounded-md border-black">
           <h3><%= post.title %></h3>
           <p><%= post.text %></p>
-          <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
-            <p>Number of Comments: <%= post.comments.count %></p>
-            <p>Number of Likes: <%= post.likes.count %></p>
+          <div class='my-4 flex justify-end items-center gap-4 text-sm'>
+            <p>Comments: <%= post.comments.count %></p>
+            <p>Likes: <%= post.likes.count %></p>
+            <p><%= link_to 'Add Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></p>
           </div>
         </div>
       <% end %>
     </div>
 
-    <button class='mt-8 px-4 py-2 text-white bg-blue-500 rounded-md'>
-      <%= link_to 'See All Posts', user_posts_path(@user) %>
+    <button class='mt-8 px-6 py-2 text-white bg-blue-500 rounded-md'>
+      <%= link_to 'All Posts', user_posts_path(@user) %>
     </button>
 
     <button class='font-medium text-xl ml-4 text-orange-500 hover:underline'>
-      <%= link_to 'Back to Users List', users_path %>
+      <%= link_to 'Users List', users_path %>
     </button>
+
+
   </section>
 </section>  
 

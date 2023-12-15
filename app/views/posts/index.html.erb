@@ -5,29 +5,29 @@
     
     <ul class='w-full mt-8 flex flex-col justify-start w-full items-start gap-4'>
       <% @posts.each_with_index do |post, index| %>
-        <div class="post border border-black">
+        <div class="post border border-black w-full p-4">
           <h3><%= post.title %></h3>
           <p><%= post.text %></p>
           <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
-            <p>Number of Comments: <%= post.comments.count %></p>
-            <p>Number of Likes: <%= post.likes.count %></p>
+            <p>Comments: <%= post.comments.count %></p>
+            <p>Likes: <%= post.likes.count %></p>
           </div>
-          <ul class='border-2'>
+          <ul class=''>
             <% post.recent_comments.each do |comment| %>
               <li><%= comment.text %></li>
             <% end %>
           </ul>
-          <a class='font-medium' href="<%= user_post_path(@user, post) %>">Read more</a>
+          <a class='font-medium px-6 py-2 bg-blue-500 rounded-md text-white mt-4' href="<%= user_post_path(@user, post) %>">Read more</a>
         </div>
       <% end %>
     </ul>
     
-    <button class='mt-8 mr-4 p-2 rounded-md bg-blue-500 text-white font-medium border-2'>
+    <button class='mt-8 mr-4 px-6 py-2 rounded-md bg-blue-500 text-white font-medium'>
       <span><%= link_to 'Next', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %></span>
     </button>
   
     <% if @page.to_i > 0 %>
-      <button class='mt-4 ml-4 p-2 font-medium bg-blue-500 text-white rounded-md border'>
+      <button class='mt-4 ml-4 p-x-6 py-2 font-medium bg-blue-500 text-white rounded-md'>
         <%= link_to 'Prev', user_posts_path(page: (@page.to_i - 1)), class: 'btn' %>
       </button>
     <% end %>
