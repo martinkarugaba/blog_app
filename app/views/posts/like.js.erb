@@ -1,0 +1,6 @@
+// like.js.erb
+console.log("Like JS executed!");
+
+let postId = <%= post.id %>;
+let likesCount = <%= post.likes.count %>;
+document.getElementById("likes-count-" + postId).textContent = likesCount;
