@@ -11,15 +11,7 @@
     <div class='mt-8 flex flex-col justify-start start-center gap-4'>
       <h2 class='font-medium'>Posts by <%= @user.name %></h2>
       <% @user.recent_posts.each do |post| %>
-        <div class="post border p-4 rounded-md border-black">
-          <h3><%= post.title %></h3>
-          <p><%= post.text %></p>
-          <div class='my-4 flex justify-end items-center gap-4 text-sm'>
-            <p>Comments: <%= post.comments.count %></p>
-            <p>Likes: <%= post.likes.count %></p>
-            <p><%= link_to 'Add Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></p>
-          </div>
-        </div>
+        <%= render '/post', post: post, show_comments: false %>
       <% end %>
     </div>
 
@@ -30,8 +22,6 @@
     <button class='font-medium text-xl ml-4 text-orange-500 hover:underline'>
       <%= link_to 'Users List', users_path %>
     </button>
-
-
   </section>
 </section>  
 

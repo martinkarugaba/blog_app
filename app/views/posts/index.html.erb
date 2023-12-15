@@ -5,20 +5,7 @@
     
     <ul class='w-full mt-8 flex flex-col justify-start w-full items-start gap-4'>
       <% @posts.each_with_index do |post, index| %>
-        <div class="post border border-black w-full p-4">
-          <h3><%= post.title %></h3>
-          <p><%= post.text %></p>
-          <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
-            <p>Comments: <%= post.comments.count %></p>
-            <p>Likes: <%= post.likes.count %></p>
-          </div>
-          <ul class=''>
-            <% post.recent_comments.each do |comment| %>
-              <li><%= comment.text %></li>
-            <% end %>
-          </ul>
-          <a class='font-medium px-6 py-2 bg-blue-500 rounded-md text-white mt-4' href="<%= user_post_path(@user, post) %>">Read more</a>
-        </div>
+        <%= render '/post', post: post, show_comments: true %>
       <% end %>
     </ul>
     

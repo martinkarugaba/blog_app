@@ -14,6 +14,14 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.author
+    @likes_count = @post.likes_counter
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    @post.increment!(:likes_counter)
+    @like = Like.create(user: current_user, post: @post)
+    # redirect_to user_post_path(@post.author_id, @post)
   end
 
   def create
