@@ -1,0 +1,14 @@
+<div class="post border border-black">
+  <h3><%= post.title %></h3>
+  <p><%= post.text %></p>
+  <div class='mt-4 flex justify-end items-center gap-4 text-sm'>
+    <p>Number of Comments: <%= post.comments.count %></p>
+    <p>Number of Likes: <%= post.likes.count %></p>
+  </div>
+  <ul class='border-2'>
+    <% post.recent_comments.each do |comment| %>
+      <li><%= comment.text %></li>
+    <% end %>
+  </ul>
+  <a class='font-medium' href="<%= user_post_path(@user, post) %>">Read more</a>
+</div>

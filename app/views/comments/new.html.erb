@@ -1,15 +1,18 @@
-<h1>New Comment</h1>
+<h1 class='text-3xl mb-8 font-medium'>New Comment</h1>
 
-<%= form_for(current_user.comments.build) do |f| %>
+<%= form_for(@comment, url: user_post_comments_path(@user, @post)) do |f| %>
   <div>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
+    <div>
+      <%= f.label :text %>
+    </div>
 
-  <%= f.hidden_field :post_id, value: @post.id %>
+    <div class='mt-4'>
+      <%= f.text_area :text %>
+    </div>
 
-  <div>
-    <%= f.submit 'Create Comment' %>
+    <div class='mt-4'>
+      <%= f.submit 'Create Comment', class: 'bg-green-500 cursor-pointer rounded-md px-4 py-2 text-white' %>
+    </div> 
   </div>
-<% end %> 
+<% end %>
 

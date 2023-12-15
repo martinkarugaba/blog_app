@@ -25,4 +25,11 @@
   <div class='mt-8'>
     <%= link_to 'Back to Posts', user_posts_path %>
   </div>
+
+  <button class='mt-8 px-4 py-2 bg-blue-500 rounded-md text-white'>
+    <%= link_to 'Create New Comment', new_user_post_comment_path(@post.author, @post) %>
+  </button>
+</section>
+
+  
 </section>
