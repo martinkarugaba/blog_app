@@ -1,0 +1,16 @@
+<h1 class='font-medium text-3xl mb-8'>Create New Post</h1>
+<%= form_for(@post, url: user_posts_path(@user)) do |f| %>
+  <div>
+    <div>
+      <p class='font-medium'><%= f.label :title %></p>
+      <%= f.text_field :title %>
+    </div>
+    <div class='mt-8'>
+      <p class='font-medium'><%= f.label :text %></p>
+      <%= f.text_area :text %>
+    </div>
+  </div>
+  <%= button_tag(type: 'submit', class: 'mt-8 text-white px-6 py-2 bg-blue-500 cursor-pointer boder-2 border-black rounded-md') do %>
+  Create Post
+  <% end %>
+<% end %>

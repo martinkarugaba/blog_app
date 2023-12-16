@@ -1,0 +1,23 @@
+<div class="post border p-4 rounded-md border-black">
+  <h3><%= post.title %></h3>
+  <p><%= post.text %></p>
+  <div class='my-4 flex justify-end items-center gap-4 text-sm'>
+    <p>Comments: <%= post.comments.count %></p>
+    <div class='my-4 flex justify-end items-center gap-4 text-sm'>
+    <p>
+      <%= button_to 'Like', post_likes_path(post, user_id: @user.id), method: :post %>
+      <span id="likes-count-<%= post.id %>"><%= post.likes.count %></span>
+    </p>
+    </div>
+    <p><%= link_to 'Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></p>
+  </div>
+
+  <% if show_comments %>
+    <ul class=''>
+      <% post.recent_comments.each do |comment| %>
+        <li><%= comment.text %></li>
+      <% end %>
+    </ul>
+    <a class='font-medium px-6 py-2 bg-blue-500 rounded-md text-white mt-4' href="<%= user_post_path(@user, post) %>">Read more</a>
+  <% end %>
+</div>
