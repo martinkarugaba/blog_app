@@ -10,6 +10,7 @@
 
     <div class='mt-8 flex flex-col justify-start start-center gap-4'>
       <h2 class='font-medium'>Posts by <%= @user.name %></h2>
+      <p class='font-medium'>Number of Posts: <%= @user.posts.count %></p>
       <% @user.recent_posts.each do |post| %>
         <%= render '/post', post: post, show_comments: false %>
       <% end %>
@@ -23,5 +24,4 @@
       <%= link_to 'Users List', users_path %>
     </button>
   </section>
-</section>  
-
+</section>
