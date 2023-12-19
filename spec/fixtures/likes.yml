@@ -1,0 +1,11 @@
+like_one:
+  user: john_doe
+  post: first_post
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+like_two:
+  user: jane_smith
+  post: second_post
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
