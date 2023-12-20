@@ -7,7 +7,7 @@
     <span>Comments: <%= post.comments.count %></span>
     <span class='my-4 flex justify-end items-center gap-4 text-sm'>
       <%= button_to 'Like', post_likes_path(post, user_id: @user.id), method: :post, class: 'bg-orange-500 px-4 py-2 rounded-md text-white', remote: true %>
-      <span id="likes-count-<%= post.id %>"><%= post.likes.count %></span>
+      <span><span id="likes-count"><%= post.likes.count %></span></span>  
     </span>
     <span><%= link_to 'Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></span>
   </div>
