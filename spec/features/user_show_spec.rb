@@ -35,28 +35,36 @@ RSpec.describe 'User Show Page', type: :feature do
     click_link 'All Posts'
     expect(page).to have_current_path(user_posts_path(@user))
   end
+
   private
+
   def expect_user_profile_picture(user)
     expect(page).to have_selector("img[src='#{user.photo}']")
   end
+
   def expect_user_username(user)
     expect(page).to have_content(user.name)
   end
+
   def expect_user_posts_count(user)
     expect(page).to have_content("#{user.posts_counter} posts")
   end
+
   def expect_user_bio(user)
     expect(page).to have_content("Bio: #{user.bio}")
   end
+
   def expect_user_first_three_posts(user)
     user.recent_posts.limit(3).each do |post|
       expect(page).to have_content(post.title)
       expect(page).to have_content(post.text)
     end
   end
+
   def expect_user_all_posts_button(user)
     expect(page).to have_link('All Posts', href: user_posts_path(user))
   end
+
   def click_user_post_redirect(user)
     post = user.recent_posts.first
     click_link post.title
