@@ -13,13 +13,13 @@
     <button class='mt-8 mr-4 px-6 py-2 rounded-md bg-blue-500 text-white font-medium'>
       <span><%= link_to 'Next', user_posts_path(page: (@page.to_i + 1)), class: 'btn' %></span>
     </button>
-  
+
     <% if @page.to_i > 0 %>
       <button class='mt-4 ml-4 p-x-6 py-2 font-medium bg-blue-500 text-white rounded-md'>
         <%= link_to 'Prev', user_posts_path(page: (@page.to_i - 1)), class: 'btn' %>
       </button>
     <% end %>
-    
+      
     <div class='mt-4 font-semibold'>
       <%= link_to 'Back to Profile', user_path(@user), class: 'btn' %>
     </div>
