@@ -101,7 +101,7 @@ Run `bundle exec rspec` to run tests
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] Add Forms
+- [] Authentication with Devise gem
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
