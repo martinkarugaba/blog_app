@@ -6,7 +6,9 @@
     
     <ul class='w-full mt-8 flex flex-col justify-start w-full items-start gap-4'>
       <% @posts.each_with_index do |post, index| %>
-        <%= render '/post', post: post, show_comments: true %>
+        <li>
+          <%= render '/post', post: post, show_comments: true %>
+        </li>
       <% end %>
     </ul>
     

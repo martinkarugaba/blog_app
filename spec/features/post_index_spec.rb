@@ -22,20 +22,20 @@ RSpec.describe 'User Post Index Page', type: :feature do
   end
 
   it 'I can see a post\'s title' do
-    post = @posts.first
-    visit user_post_path(@user, post)
-    expect(page.text.downcase).to include(post.title.downcase)
+    post = @posts.fifth
+    visit user_posts_path(@user)
+    click_link 'Next'
+    expect(page).to have_content(post.title)
   end
 
   it 'I can see some of the post\'s body' do
     post = @posts.first
-    visit user_post_path(@user, post)
-    expect(page).to have_selector('p', text: post.text)
+    visit user_posts_path(@user)
+    expect(page).to have_content(post.text[0..10])
   end
 
   it 'I can see the first comments on a post' do
     post = @posts.first
-    visit user_post_path(@user, post)
     post.recent_comments.each do |comment|
       expect(page).to have_content(comment.text)
     end
@@ -43,14 +43,13 @@ RSpec.describe 'User Post Index Page', type: :feature do
 
   it 'I can see how many comments a post has' do
     post = @posts.first
-    visit user_post_path(@user, post)
     expect(page).to have_content("Comments: #{post.comments.count}")
   end
 
   it 'I can see how many likes a post has' do
     post = @posts.first
-    visit user_post_path(@user, post)
-    expect(page).to have_content(post.likes.count.to_s)
+    visit user_posts_path(@user)
+    expect(page).to have_content("Like\n#{post.likes.count}")
   end
 
   it 'I can see a section for pagination if there are more posts than fit on the view' do
