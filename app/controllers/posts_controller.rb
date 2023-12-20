@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @page = params.fetch(:page, 0).to_i
-    @posts = @user.posts.includes(:author).limit(3).offset(@page * 3)
+    @posts = @user.posts.includes(:comments).limit(3).offset(@page * 3)
   end
 
   def new
