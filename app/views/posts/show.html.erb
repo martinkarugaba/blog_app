@@ -1,4 +1,8 @@
-<h1 class='font-semibold text-3xl mb-6'>Post details</h1>
+<h1 class='font-semibold text-3xl mb-6'><%= @post.title %></h1>
+
+<div class='mt-8'>
+  <%= link_to 'Back to Posts', user_posts_path(@post.author) %>
+</div>
 
 <section class='w-[500px] border mb-[5rem]'>
   <div class='flex justify-between items-center'>
@@ -20,10 +24,6 @@
         </li>
       <% end %>
     </ul>
-  </div>
-
-  <div class='mt-8'>
-    <%= link_to 'Back to Posts', user_posts_path %>
   </div>
 
   <button class='mt-8 px-4 py-2 bg-blue-500 rounded-md text-white'>

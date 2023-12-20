@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.includes(:posts)
   end
 
   def show
@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email) # Add any other attributes here
+    params.require(:user).permit(:name, :email)
   end
 end

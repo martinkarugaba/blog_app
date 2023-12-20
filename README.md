@@ -90,11 +90,18 @@ Run `bundle exec rspec` to run tests
 - Twitter: [@martin_karugaba](https://twitter.com/martin_karugaba)
 - LinkedIn: [martinkarugaba](https://www.linkedin.com/in/martinkarugaba/)
 
+### Richard Sikaonga
+
+- GitHub: [@richie1988](https://github.com/richie1988)
+- LinkedIn: [Richard Sikaonga](https://www.linkedin.com/in/richard-sikaonga-039940275/)
+- Instagram: [@richiesik](https://www.instagram.com/richiesik/)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] Add Forms
+- [] Authentication with Devise gem
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
