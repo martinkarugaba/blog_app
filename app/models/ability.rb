@@ -12,7 +12,7 @@ class Ability
       if user.id
         can :create, Post
         can :update, Post, user_id: user.id
-        can :destroy, Post, user_id: user.id # Allow users to delete their own posts
+        can :destroy, Post, author_id: user.id # Allow users to delete their own posts
       end
     end
   end
