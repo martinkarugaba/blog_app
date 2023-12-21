@@ -12,6 +12,10 @@
     <span><%= link_to 'Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></span>
   </div>
 
+  <% if can? :destroy, @post %>
+    <%= button_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <% end %>
+
   <% if show_comments %>
     <ul class=''>
       <% post.recent_comments.each do |comment| %>

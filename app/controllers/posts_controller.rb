@@ -1,5 +1,7 @@
 require 'will_paginate/array'
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @page = params.fetch(:page, 0).to_i
@@ -35,6 +37,11 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: 'Post was successfully deleted.'
   end
 
   private

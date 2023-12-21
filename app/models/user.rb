@@ -21,4 +21,10 @@ class User < ApplicationRecord
   def delete_user_from_database
     destroy
   end
+
+  enum role: %i[user admin moderator] # Add any roles you need
+
+  def admin?
+    role == 'admin'
+  end
 end
