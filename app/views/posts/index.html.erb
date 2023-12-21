@@ -2,12 +2,12 @@
   <section class='w-[500px] border-black'>
     <h1 class='font-medium text-4xl font-medium mb-4'>All Posts by <%= @user.name %></h1>
     <p class='font-medium mb-2'>Number of Posts: <%= @user.posts.count %></p>
-    <%= render '/userprofile' %>
+    <%= render '/shared/userprofile' %>
     
     <ul class='w-full mt-8 flex flex-col justify-start w-full items-start gap-4'>
       <% @posts.each_with_index do |post, index| %>
         <li>
-          <%= render '/post', post: post, show_comments: true %>
+          <%= render '/shared/post', post: post, show_comments: true %>
         </li>
       <% end %>
     </ul>

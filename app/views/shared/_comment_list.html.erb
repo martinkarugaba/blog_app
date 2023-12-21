@@ -1,0 +1,9 @@
+<% post.comments.each do |comment| %>
+  <li class='mb-4'>
+    <p class='font-medium'><%= comment.user.name %></p>
+    <p><%= comment.text %></p>
+    <% if can? :destroy, comment %>
+      <%= button_to 'Delete Comment', [comment.user, post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-white px-6 py-2 bg-red-500 rounded-md mt-4' %>
+    <% end %>
+  </li>
+<% end %>

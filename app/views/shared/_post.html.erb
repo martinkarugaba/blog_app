@@ -17,11 +17,6 @@
   <% end %>
 
   <% if show_comments %>
-    <ul class=''>
-      <% post.recent_comments.each do |comment| %>
-        <li><%= comment.text %></li>
-      <% end %>
-    </ul>
-    <a class='font-medium px-6 py-2 bg-blue-500 rounded-md text-white mt-4' href="<%= user_post_path(@user, post) %>">Read more</a>
+    <%= render '/shared/comment_list', post: post %>
   <% end %>
 </div>  

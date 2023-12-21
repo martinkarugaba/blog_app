@@ -17,12 +17,7 @@
   <div class='mt-8'>
     <p class='font-medium'>Comments</p>
     <ul class='mt-4'>
-      <% @post.comments.each do |comment| %>
-        <li class='mb-4'>
-          <p class='font-medium'><%= comment.user.name %></p>
-          <p><%= comment.text %></p>
-        </li>
-      <% end %>
+      <%= render '/shared/comment_list', post: @post %>
     </ul>
   </div>
 

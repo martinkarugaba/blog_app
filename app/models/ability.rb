@@ -10,9 +10,12 @@ class Ability
       can :read, :all # Guests and regular users can read any resource
 
       if user.id
-        can :create, Post
+        can :create, Post if user.present?
+        can :create, Comment if user.present?
         can :update, Post, user_id: user.id
+
         can :destroy, Post, author_id: user.id # Allow users to delete their own posts
+        can :destroy, Comment, user_id: user.id # Allow users to delete their own comments
       end
     end
   end

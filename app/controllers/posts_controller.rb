@@ -1,5 +1,6 @@
 require 'will_paginate/array'
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[show destroy]
   load_and_authorize_resource
 
   def index
@@ -45,6 +46,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)
