@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable # , :confirmable
 
   has_many :posts, foreign_key: 'author_id'
   has_many :comments
@@ -20,5 +20,11 @@ class User < ApplicationRecord
 
   def delete_user_from_database
     destroy
+  end
+
+  enum role: %i[user admin moderator] # Add any roles you need
+
+  def admin?
+    role == 'admin'
   end
 end

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:post_id])
@@ -17,6 +18,13 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_back(fallback_location: post_path(@post), notice: 'Comment was successfully deleted.')
   end
 
   private

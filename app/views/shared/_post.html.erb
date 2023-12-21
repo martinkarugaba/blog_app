@@ -12,12 +12,11 @@
     <span><%= link_to 'Comment', new_user_post_comment_path(@user, post), class: 'bg-blue-500 px-4 py-2 rounded-md text-white' %></span>
   </div>
 
+  <% if can? :destroy, post %>
+    <%= button_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <% end %>
+
   <% if show_comments %>
-    <ul class=''>
-      <% post.recent_comments.each do |comment| %>
-        <li><%= comment.text %></li>
-      <% end %>
-    </ul>
-    <a class='font-medium px-6 py-2 bg-blue-500 rounded-md text-white mt-4' href="<%= user_post_path(@user, post) %>">Read more</a>
+    <%= render '/shared/comment_list', post: post %>
   <% end %>
 </div>  

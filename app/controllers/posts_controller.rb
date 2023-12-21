@@ -1,5 +1,8 @@
 require 'will_paginate/array'
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[show destroy]
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @page = params.fetch(:page, 0).to_i
@@ -37,7 +40,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: 'Post was successfully deleted.'
+  end
+
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)
